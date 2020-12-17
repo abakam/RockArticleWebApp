@@ -1,0 +1,8 @@
+﻿@model RockArticleApp.Pages.ArticleModel
+
+<button data-id="@Model.ArticleId" type="button" class="like-button" title="Click to like this post!">
+    <i class="glyphicon glyphicon-thumbs-up"></i> Like
+    |
+    <span class="like-count">@Model.ArticleLikesCount</span>
+</button>
+

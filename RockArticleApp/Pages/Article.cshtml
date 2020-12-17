@@ -1,0 +1,17 @@
+﻿@page
+@model RockArticleApp.Pages.ArticleModel
+@{
+   
+}
+
+<script src="https://gist.github.com/abakam/508a62f7ad3c2796d72f818e37ac138e.js"></script>
+
+@await Component.InvokeAsync("LikeButton", Model)
+
+
+
+
+@section scripts{
+    <script src="~/js/article.js" asp-append-version="true"></script>
+}
+
