@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RockArticleApp.Services;
-using RockArticleApp.Utils;
+using RockArticleApp.Utilities;
 
 namespace RockArticleApp
 {
@@ -26,8 +26,9 @@ namespace RockArticleApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddServerSideBlazor();
             services.AddHttpClient<IArticleApiService, ArticleApiService>();
-            services.AddSingleton<EnvironmentVariables>();
+            services.AddSingleton<EnvironmentVariableKeys>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +55,7 @@ namespace RockArticleApp
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
             });
         }
     }

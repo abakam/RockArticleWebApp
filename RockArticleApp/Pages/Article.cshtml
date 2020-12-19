@@ -1,10 +1,10 @@
 ﻿@page
 @model RockArticleApp.Pages.ArticleModel
 @{
-   
+
 }
 
-<script src="https://gist.github.com/abakam/508a62f7ad3c2796d72f818e37ac138e.js"></script>
+<script src="@Model.ArticleContentLocation"></script>
 
 @await Component.InvokeAsync("LikeButton", Model)
 

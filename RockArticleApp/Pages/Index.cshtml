@@ -5,9 +5,28 @@
 }
 
 <div class="text-center">
+
     <h1 class="display-4">Coding Challenge</h1>
 
-    <p>See the Solution: <a asp-page="/article" asp-route-articleId="atatatahererejsjsj">Build a Reusable Like Button</a>.</p>
-    
+    <div>
+        <h2>Implementation Using View Components: Click the links to visit an article page</h2>
+        @foreach (var articleResource in Model.Articles)
+        {
+            <p>See the Solution: <a asp-page="/article" asp-route-articleId="@articleResource.ArticleId">@articleResource.ArticleTitle</a>.</p>
+        }
+    </div>
+
+    <div>
+        <h2>Implementation Using Razor Components: The articles are displayed on the Index page</h2>
+        @foreach (var articleResource in Model.Articles)
+        {
+            <component type="@typeof(RockArticleApp.Pages.Components.RazorComponents.Article)"
+                       render-mode="ServerPrerendered"
+                       param-ArticleId="@articleResource.ArticleId"
+                       param-ArticleLikesCount="@articleResource.ArticleLikesCount"
+                       param-HasBeenLiked="@articleResource.HasBeenLiked" />
+        }
+    </div>
+
 </div>
 

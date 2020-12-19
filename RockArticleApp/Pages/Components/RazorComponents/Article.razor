@@ -1,0 +1,66 @@
+﻿@using RockArticleApp.Services
+@using Microsoft.Extensions.Logging
+@using RockArticleApp.Utilities
+@using System.Net.Http
+@using RockArticleApp.Models
+@inherits RockArticleBase
+
+<section >
+    <div>
+        <h3>Embed Github Gist</h3>
+
+        <LikeButton ArticleId="@ArticleId" HasBeenLiked="@HasBeenLiked" ArticleLikesCount="@ArticleLikesCount" OnClickCallback="@LikeArticleHandlerAsync"></LikeButton>
+
+    </div>
+
+</section>
+
+@code {
+
+    [Inject]
+    private IArticleApiService _articleApiService { get; set; }
+    private ILogger _logger { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var articleLikes = await _articleApiService.GetArticleLikesAsync(ArticleId);
+
+            ArticleLikesCount = articleLikes.ArticleLikesCount;
+            HasBeenLiked = articleLikes.HasBeenLiked;
+
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Retrieving article likes failed: {ex.Message}", ex);
+        }
+    }
+
+    public async Task LikeArticleHandlerAsync(LikeArticlePayload payload)
+    {
+       
+
+        if (HasBeenLiked)
+        {
+            ArticleLikesCount--;
+            HasBeenLiked = !HasBeenLiked;
+        }
+        else
+        {
+            ArticleLikesCount++;
+            HasBeenLiked = !HasBeenLiked;
+        }
+
+        try
+        {
+            var articleLikes = await _articleApiService.LikeArticleAsync(ArticleId);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Updating article likes failed: {ex.Message}", ex);
+        }
+    }
+}
+
+

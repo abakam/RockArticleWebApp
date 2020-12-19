@@ -10,22 +10,22 @@ using RockArticleApp.Services;
 
 namespace RockArticleApp.Pages
 {
-    public class ArticleModel : PageModel
+    public class Article2Model : PageModel
     {
+       
         private readonly ILogger<ArticleModel> _logger;
         private readonly IArticleApiService _articleApiService;
 
-        public ArticleModel(IArticleApiService articleApiService, ILogger<ArticleModel> logger)
+        public Article2Model(IArticleApiService articleApiService, ILogger<ArticleModel> logger)
         {
-            _articleApiService = articleApiService;
             _logger = logger;
+            _articleApiService = articleApiService;
         }
 
         [BindProperty(SupportsGet = true)]
         public string ArticleId { get; set; }
         public long ArticleLikesCount { get; set; }
         public bool HasBeenLiked { get; set; }
-        public string ArticleContentLocation { get; set; }
 
         public async Task OnGetAsync(string articleId)
         {
@@ -35,9 +35,9 @@ namespace RockArticleApp.Pages
 
                 ArticleLikesCount = articleLikes.ArticleLikesCount;
                 HasBeenLiked = articleLikes.HasBeenLiked;
-               
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError($"Retrieving article likes failed: {ex.Message}", ex);
             }
@@ -55,7 +55,7 @@ namespace RockArticleApp.Pages
 
                 return new JsonResult(articleLikes);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError($"Updating article likes failed: {ex.Message}", ex);
                 return new JsonResult(new ArticleLike());

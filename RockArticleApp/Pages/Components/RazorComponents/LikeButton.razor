@@ -1,0 +1,22 @@
+﻿@using RockArticleApp.Models
+@inherits RockArticleBase
+
+<button type="button" class="like-button @( HasBeenLiked ? "btn-primary" : "btn-secondary" )" title="Click to like this article!" @onclick="OnClickHandlerAsync">
+    <i class="fas fa-thumbs-up fa-lg"></i> Like
+    |
+    <span class="like-count">@ArticleLikesCount</span>
+</button>
+
+@code {
+
+
+    [Parameter]
+    public EventCallback<LikeArticlePayload> OnClickCallback { get; set; }
+
+
+    async Task OnClickHandlerAsync()
+    {
+        await OnClickCallback.InvokeAsync(new LikeArticlePayload { ArticleId = ArticleId, HasBeenLiked = HasBeenLiked });
+    }
+
+}

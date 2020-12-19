@@ -23,7 +23,8 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ROCKARTICLEAPI_BASEURL": "https://localhost:5003",
         "ROCKARTICLEAPI_GETLIKESPATH": "/",
-        "ROCKARTICLEAPI_LIKEARTICLEPATH": "/"
+        "ROCKARTICLEAPI_LIKEARTICLEPATH": "/",
+        "ROCKARTICLEAPI_GETARTICLESPATH": "/"
 
       }
     }

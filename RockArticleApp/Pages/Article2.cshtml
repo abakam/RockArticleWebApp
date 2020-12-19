@@ -1,0 +1,14 @@
+﻿@page
+@model RockArticleApp.Pages.Article2Model
+@{
+
+}
+
+<script src="https://gist.github.com/abakam/508a62f7ad3c2796d72f818e37ac138e.js"></script>
+
+<component type="typeof(RockArticleApp.Pages.Components.RazorComponents.LikeButton)"
+           render-mode="ServerPrerendered"
+           param-ArticleId="Model.ArticleId"
+           param-ArticleLikesCount="Model.ArticleLikesCount"
+           param-HasBeenLiked="Model.HasBeenLiked"
+           />

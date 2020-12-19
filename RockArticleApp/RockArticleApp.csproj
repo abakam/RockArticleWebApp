@@ -10,7 +10,10 @@
     <Folder Include="ViewComponents\" />
     <Folder Include="Pages\Components\" />
     <Folder Include="Pages\Components\LikeButton\" />
-    <Folder Include="Utils\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Pages\Components\RazorComponents\" />
+    <Folder Include="Models\Resources\" />
+    <Folder Include="Models\Responses\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
